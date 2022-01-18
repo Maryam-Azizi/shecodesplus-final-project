@@ -15,144 +15,153 @@
   </head>
   <body>
     <div class="container">
-      <form>
+      <div class="weather">
+        <form>
+          <div class="row">
+            <div class="col-9">
+              <input
+                class="form-control search-input"
+                id="input-city"
+                type="search"
+                placeholder="Enter city ..."
+                autocomplete="off"
+              />
+            </div>
+            <div class="col-3">
+              <input type="submit" class="btn btn-primary w-100 submit-input" />
+            </div>
+          </div>
+        </form>
         <div class="row">
-          <div class="col-9">
-            <input
-              class="form-control search-input"
-              type="search"
-              placeholder="Enter city ..."
-              autocomplete="off"
-            />
+          <div class="col-6">
+            <h1 id="city"> </h1>
+            <ul>
+              <li>
+                <span id="date-today">  </span>
+                <span id="description"></span>
+              </li>
+              <li>
+                <span></span> Humidity: <strong id="humidity"> </strong>
+                <span> Wind:  </span> <strong  id="wind">  </strong>
+              </li>
+            </ul>
           </div>
-          <div class="col-3">
-            <input type="submit" class="btn btn-primary w-100" />
-          </div>
-        </div>
-      </form>
-      <div class="row">
-        <div class="col-6">
-          <h1>Mashhad</h1>
-          <ul>
-            <li>
-              <span> Saturday 16:15, </span>
-              broken clouds
-            </li>
-            <li>
-              Humidity: <strong> 71%</strong> Wind<strong>5.14km/h</strong>
-            </li>
-          </ul>
-        </div>
-        <div class="col-6">
-          <div class="temperature-container">
-            <span class="weather-icon-today">
-                <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"/> </span>
-            <div>
-              <span class="temperature"> 11 </span>
-              <span class="unit"> °C </span>
+          <div class="col-6">
+            <div class="temperature-container">
+              <span>
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  id="icon-today"
+                  alt=""
+                />
+              </span>
+           
+<span class="temperature" id="temperature-today"> </span>
+                <span class="unit" id="celsius"> °C </span>
+                <span class="unit">|</span>
+                <span class="unit" id="fahrenheit">°F </span>
+             
+           
+                
             </div>
           </div>
         </div>
         <div class="row WeatherForecast">
-            <div class="col">
-                <div class="WeatherForecastPreview">
-                    <div class="forecast-time">
-                        Sun
-                    </div>
-                     <span class="weather-icon-forecast"> 
-                         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"/>
-                     </span>
-                     <div class="forecast-temperature">
-                         <span class="forecast-temperature-max">  12°</span>
-                          <span class="forecast-temperature-min">  10°</span>
-                       
-                     </div>
-                </div>
+          <div class="col">
+            <div class="WeatherForecastPreview">
+              <div class="forecast-time">Sun</div>
+              <span class="weather-icon-forecast">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                />
+              </span>
+              <div class="forecast-temperature">
+                <span class="forecast-temperature-max"> 12°</span>
+                <span class="forecast-temperature-min"> 10°</span>
+              </div>
             </div>
-            <div class="col">
-                <div class="WeatherForecastPreview">
-                    <div class="forecast-time">
-                        Sun
-                    </div>
-                     <span class="weather-icon-forecast"> 
-                         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"/>
-                     </span>
-                     <div class="forecast-temperature">
-                         <span class="forecast-temperature-max">  12°</span>
-                          <span class="forecast-temperature-min">  10°</span>
-                       
-                     </div>
-                </div>
+          </div>
+          <div class="col">
+            <div class="WeatherForecastPreview">
+              <div class="forecast-time">Sun</div>
+              <span class="weather-icon-forecast">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                />
+              </span>
+              <div class="forecast-temperature">
+                <span class="forecast-temperature-max"> 12°</span>
+                <span class="forecast-temperature-min"> 10°</span>
+              </div>
             </div>
-            <div class="col">
-                <div class="WeatherForecastPreview">
-                    <div class="forecast-time">
-                        Sun
-                    </div>
-                     <span class="weather-icon-forecast"> 
-                         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"/>
-                     </span>
-                     <div class="forecast-temperature">
-                         <span class="forecast-temperature-max">  12°</span>
-                          <span class="forecast-temperature-min">  10°</span>
-                       
-                     </div>
-                </div>
+          </div>
+          <div class="col">
+            <div class="WeatherForecastPreview">
+              <div class="forecast-time">Sun</div>
+              <span class="weather-icon-forecast">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                />
+              </span>
+              <div class="forecast-temperature">
+                <span class="forecast-temperature-max"> 12°</span>
+                <span class="forecast-temperature-min"> 10°</span>
+              </div>
             </div>
-            <div class="col">
-                <div class="WeatherForecastPreview">
-                    <div class="forecast-time">
-                        Sun
-                    </div>
-                     <span class="weather-icon-forecast"> 
-                         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"/>
-                     </span>
-                     <div class="forecast-temperature">
-                         <span class="forecast-temperature-max">  12°</span>
-                          <span class="forecast-temperature-min">  10°</span>
-                       
-                     </div>
-                </div>
+          </div>
+          <div class="col">
+            <div class="WeatherForecastPreview">
+              <div class="forecast-time">Sun</div>
+              <span class="weather-icon-forecast">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                />
+              </span>
+              <div class="forecast-temperature">
+                <span class="forecast-temperature-max"> 12°</span>
+                <span class="forecast-temperature-min"> 10°</span>
+              </div>
             </div>
-            <div class="col">
-                <div class="WeatherForecastPreview">
-                    <div class="forecast-time">
-                        Sun
-                    </div>
-                     <span class="weather-icon-forecast"> 
-                         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"/>
-                     </span>
-                     <div class="forecast-temperature">
-                         <span class="forecast-temperature-max">  12°</span>
-                          <span class="forecast-temperature-min">  10°</span>
-                       
-                     </div>
-                </div>
+          </div>
+          <div class="col">
+            <div class="WeatherForecastPreview">
+              <div class="forecast-time">Sun</div>
+              <span class="weather-icon-forecast">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                />
+              </span>
+              <div class="forecast-temperature">
+                <span class="forecast-temperature-max"> 12°</span>
+                <span class="forecast-temperature-min"> 10°</span>
+              </div>
             </div>
-            <div class="col">
-                <div class="WeatherForecastPreview">
-                    <div class="forecast-time">
-                        Sun
-                    </div>
-                     <span class="weather-icon-forecast"> 
-                         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"/>
-                     </span>
-                     <div class="forecast-temperature">
-                         <span class="forecast-temperature-max">  12°</span>
-                          <span class="forecast-temperature-min">  10°</span>
-                       
-                     </div>
-                </div>
+          </div>
+          <div class="col">
+            <div class="WeatherForecastPreview">
+              <div class="forecast-time">Sun</div>
+              <span class="weather-icon-forecast">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                />
+              </span>
+              <div class="forecast-temperature">
+                <span class="forecast-temperature-max"> 12°</span>
+                <span class="forecast-temperature-min"> 10°</span>
+              </div>
             </div>
-
-
+          </div>
         </div>
-      </div>
-      <footer>
-          This project was coded by Maryam Azizi and is<a href=""> open-sourced on GitHub</a>  and<a href="">hosted on Netlify</a> 
-      </footer>
-    </div>
 
+        <footer>
+          This project was coded by Maryam Azizi and is<a href="">
+            open-sourced on GitHub</a
+          >
+          and<a href=""> hosted on Netlify</a>
+        </footer>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
