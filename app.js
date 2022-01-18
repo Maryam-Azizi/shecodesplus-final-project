@@ -78,7 +78,7 @@ fahrenheitElement.classList.remove("active")
 }
 function displayFahrenhite(e){
 e.preventDefault()
-let fahrenheit = Math.round(celsiuseTemperature*9)/5+32;
+let fahrenheit = Math.round((celsiuseTemperature*9)/5+32);
   temperatureTodayElement.innerHTML = fahrenheit;
   fahrenheitElement.classList.add("active");
   celsiusElement.classList.remove("active")
