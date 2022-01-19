@@ -14,13 +14,11 @@ let celsiusElement = document.getElementById("celsius");
 let fahrenheitElement = document.getElementById("fahrenheit");
 let celsiuseTemperature = null;
 let city = "Mashhad";
-search(city)
-
-
+search(city);
 
 formElement.addEventListener("submit", handelSubmit);
-fahrenheitElement.addEventListener("click",displayFahrenhite)
-celsiusElement.addEventListener("click",displayCelsiuse)
+fahrenheitElement.addEventListener("click", displayFahrenhite);
+celsiusElement.addEventListener("click", displayCelsiuse);
 
 function handelSubmit(e) {
   e.preventDefault();
@@ -50,7 +48,8 @@ function displayTemperature(response) {
   celsiuseTemperature = Math.round(response.data.main.temp);
   celsiusElement.classList.add("active");
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
-  dateTodayElement.innerHTML = formatDate(response.data.dt*1000);
+  dateTodayElement.innerHTML = formatDate(response.data.dt * 1000);
+  getForecastData(response.data.coord);
 }
 
 function formatDate(dt) {
@@ -67,19 +66,48 @@ function formatDate(dt) {
     "Friday",
     "Saturday",
   ];
- return `${days[day]} ${hours}:${minutes}`;
+  return `${days[day]} ${hours}:${minutes}`;
 }
 
-function displayCelsiuse(e){
-e.preventDefault()
-temperatureTodayElement.innerHTML = celsiuseTemperature;
-celsiusElement.classList.add("active");
-fahrenheitElement.classList.remove("active")
+function displayCelsiuse(e) {
+  e.preventDefault();
+  temperatureTodayElement.innerHTML = celsiuseTemperature;
+  celsiusElement.classList.add("active");
+  fahrenheitElement.classList.remove("active");
 }
-function displayFahrenhite(e){
-e.preventDefault()
-let fahrenheit = Math.round((celsiuseTemperature*9)/5+32);
+function displayFahrenhite(e) {
+  e.preventDefault();
+  let fahrenheit = Math.round((celsiuseTemperature * 9) / 5 + 32);
   temperatureTodayElement.innerHTML = fahrenheit;
   fahrenheitElement.classList.add("active");
-  celsiusElement.classList.remove("active")
+  celsiusElement.classList.remove("active");
+}
+function displayForecast(response) {
+  let forecast = document.getElementById("forecast");
+  let dailyForecast = response.data.daily;
+  console.log(dailyForecast);
+  forecast.innerHTML = `<div class="col">
+      <div class="WeatherForecastPreview">
+        <div class="forecast-time">Sun</div>
+          <span class="weather-icon-forecast">
+            <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+            />
+          </span>
+        <div class="forecast-temperature">
+          <span class="forecast-temperature-max"> 12°</span>
+          <span class="forecast-temperature-min"> 10°</span>
+       </div>
+   </div>
+`;
+}
+displayForecast();
+
+function getForecastData(coord) {
+  console.log(coord);
+  let link = `
+ https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=metric
+ `;
+  axios.get(link).then(displayForecast);
+  console.log(link);
 }
