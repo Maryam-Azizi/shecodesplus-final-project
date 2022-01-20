@@ -12,6 +12,7 @@ let iconTodayElement = document.getElementById("icon-today");
 let temperatureTodayElement = document.getElementById("temperature-today");
 let celsiusElement = document.getElementById("celsius");
 let fahrenheitElement = document.getElementById("fahrenheit");
+ let forecastElement = document.getElementById("forecast");
 let celsiuseTemperature = null;
 let city = "Mashhad";
 search(city);
@@ -29,6 +30,7 @@ function handelSubmit(e) {
 function search(city) {
   let link = `${apiUrl}${city}&appid=${apiKey}&units=metric`;
   console.log(link);
+  forecastElement.innerHTML = ""
   axios.get(link).then(displayTemperature);
 }
 function displayTemperature(response) {
@@ -83,24 +85,46 @@ function displayFahrenhite(e) {
   celsiusElement.classList.remove("active");
 }
 function displayForecast(response) {
-  let forecast = document.getElementById("forecast");
-  let dailyForecast = response.data.daily;
+ 
+  let dailyForecast = response.data.daily.slice(0,5);
   console.log(dailyForecast);
-  forecast.innerHTML = `<div class="col">
+
+  dailyForecast.forEach(function (dayForecast) {
+   
+  
+    forecastElement.innerHTML += `<div class="col">
+    
       <div class="WeatherForecastPreview">
-        <div class="forecast-time">Sun</div>
+        <div class="forecast-time">${formatDateForecast(
+          dayForecast.dt * 1000
+        )}</div>
           <span class="weather-icon-forecast">
             <img
-                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  src="http://openweathermap.org/img/wn/${
+                    dayForecast.weather[0].icon
+                  }@2x.png" alt ="${dayForecast.weather[0].description}"
             />
           </span>
         <div class="forecast-temperature">
-          <span class="forecast-temperature-max"> 12°</span>
-          <span class="forecast-temperature-min"> 10°</span>
+          <span class="forecast-temperature-max"> ${Math.round(
+            dayForecast.temp.max
+          )}°</span>
+          <span class="forecast-temperature-min"> ${Math.round(
+            dayForecast.temp.min
+          )}°</span>
        </div>
    </div>
 `;
+  });
 }
+function formatDateForecast(dt) {
+  let date = new Date(dt);
+  let day = date.getDay(dt);
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+  return days[day];
+}
+
 displayForecast();
 
 function getForecastData(coord) {
